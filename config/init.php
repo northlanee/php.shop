@@ -1,7 +1,7 @@
 <?php
 
 define("DEBUG", 1);
-define("PATH", 'shop.local');
+define("PATH", 'http://shop.local');
 define("LAYOUT", 'default');
 
 define("ROOT", dirname(__DIR__));

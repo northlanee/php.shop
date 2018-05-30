@@ -7,4 +7,4 @@ use north\App;
 
 new App();
 
-debug(App::$app->getProperties());
+throw new Exception('Page not found', 404);
