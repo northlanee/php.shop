@@ -17,7 +17,8 @@ class App
         session_start(); // Запуск сессии
         self::$app = Registry::instance(); // Создаем обьект реестра через синглтон
         $this->getParams(); // Помещаем параметры из конфига в статическую переменную класса
-        new ErrorHandler();
+        new ErrorHandler(); // Создаем класс обработчика ошибок
+        Router::dispatch($query); // Вызов функции сравнения роута с таблицей маршрутизиции
 
     }
 

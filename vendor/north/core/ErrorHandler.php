@@ -61,7 +61,7 @@ class ErrorHandler
 
         }
 
-        if (DEBUG) {
+        elseif (DEBUG) {
 
             require WWW . '/errors/dev.php';
             die;
