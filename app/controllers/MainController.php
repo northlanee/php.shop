@@ -1,15 +1,15 @@
 <?php
 
-
 namespace app\controllers;
 
+use app\controllers\AppController;
 
-class MainController
+class MainController extends AppController
 {
 
     public function indexAction() {
 
-        echo 'i am maincontroller';
+        echo $this->view;
 
     }
 
