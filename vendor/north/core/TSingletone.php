@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HP
- * Date: 30.05.2018
- * Time: 16:38
- */
+
 
 namespace north;
 

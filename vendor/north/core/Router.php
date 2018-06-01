@@ -25,6 +25,7 @@ class Router
     public static function getRoutes() {
 
         return self::$routes;
+
     }
 
     /*
@@ -33,17 +34,50 @@ class Router
     public static function getRoute() {
 
         return self::$route;
+
     }
 
     /*
-     * Функция %применения действия% при сравнении урл с роутами
+     * Функция вызова контроллера и метода при сравнении урл с роутами
      */
     public static function dispatch ($url) {
 
-        if (self::matchRoute($url)) {
-            echo 'ok';
+        if (self::matchRoute($url)) { // Если маршрут найден с помощью метода matchRoute
+
+            // Формируем пространство имен контроллера
+            $controller = 'app\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
+
+            // Если класс контроллера найден
+            if (class_exists($controller)) {
+
+                $controllerObject = new $controller(self::$route); // Создаем обьект контроллера
+                $action = self::$route['action'] . 'Action'; // Формируем название метода контроллера
+
+                // Если метод найден в контроллере
+                if (method_exists($controllerObject, $action)) {
+
+                    // Вызываем нужный метод
+                    $controllerObject->$action();
+
+                } else {
+
+                    // Если не найден экшн
+                    throw new \Exception("Метод $controller::$action не найден", 404);
+
+                }
+
+            } else {
+
+                // Если не найден контроллер
+                throw new \Exception("Контроллер $controller не найден", 404);
+
+            }
+
         } else {
-            echo 'not ok';
+
+            // Если не найден путь
+            throw new \Exception("Страница не найдена", 404);
+
         }
 
     }
@@ -53,7 +87,76 @@ class Router
      */
     public static function matchRoute ($url) {
 
+        // Цикл перебора всех заданных роутов
+        foreach (self::$routes as $pattern => $route) {
+
+            // Если роут совпал, помещаем все параметры роута заданные в конфиге в переменную $matches
+            if (preg_match("#{$pattern}#", $url, $matches)) {
+
+                // Цикл перебора массива для сохранения только нужных ключей (только строковые)
+                foreach ($matches as $k => $v) {
+
+                    if (is_string($k)) {
+
+                        $route[$k] = $v;
+
+                    }
+
+                }
+
+                // Если метод не задан явно, присваиваем ему индексное значение
+                if (empty($route['action'])) {
+
+                    $route['action'] = 'index';
+
+                }
+
+                // Если префикс не задан явно, присваиваем ему пустую строку или добавляем обратный слэш, если задан
+                if (!isset($route['prefix'])) {
+
+                    $route['prefix'] = '';
+
+                } else {
+
+                    $route['prefix'] .= '\\';
+
+                }
+
+                // Преобразование регистра имен контроллера и метода
+                $route['controller'] = self::upperCamelCase($route['controller']);
+                $route['action'] = self::lowerCamelCase($route['action']);
+
+                // Если роут найден, помещаем его в статическую переменную и возвращаем true
+                self::$route = $route;
+
+                return true;
+
+            }
+
+        }
+
         return false;
+
+    }
+
+    /*
+     * Метод для преобразования регистра контроллера
+     */
+    protected static function upperCamelCase ($str) {
+
+        $str = str_replace('-', ' ', $str);
+        $str = ucwords($str);
+        $str = str_replace(' ', '', $str);
+        return $str;
+
+    }
+
+    /*
+     * Метод для преобразования регистра экшена
+     */
+    protected static function lowerCamelCase ($str) {
+
+        return lcfirst(self::upperCamelCase($str));
 
     }
 
