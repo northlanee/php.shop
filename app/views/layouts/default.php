@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <p>Default layout</p>
+    <?= $content;?>
 
 </body>
 </html>

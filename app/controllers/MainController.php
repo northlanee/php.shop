@@ -9,7 +9,7 @@ class MainController extends AppController
 
     public function indexAction() {
 
-        echo $this->view;
+
 
     }
 

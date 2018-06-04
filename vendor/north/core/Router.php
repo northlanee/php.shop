@@ -58,6 +58,7 @@ class Router
 
                     // Вызываем нужный метод
                     $controllerObject->$action();
+                    $controllerObject->getView();
 
                 } else {
 

@@ -85,3 +85,6 @@
 [2018-06-01 10:30:13] Текст ошибки:
         (Метод app\controllers\MainController::indexAction не найден) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (59)
 ===================
+[2018-06-04 23:08:42] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (80)
+===================

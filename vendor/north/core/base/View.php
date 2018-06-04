@@ -26,4 +26,32 @@ class View
 
     }
 
+    public function render ($data) {
+
+        $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
+
+        if (is_file($viewFile)) {
+
+            ob_start();
+            require $viewFile;
+            $content = ob_get_clean();
+
+        }
+        else throw new \Exception("Не найден вид $viewFile", 500);
+
+        if (false !== $this->layout) {
+
+            $layoutFile = APP . "/views/layouts/{$this->layout}.php";
+
+            if (is_file($layoutFile)) {
+
+                require $layoutFile;
+
+            }
+            else throw new \Exception("Не найден шаблон $layoutFile", 500);
+
+        }
+
+    }
+
 }
