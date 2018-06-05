@@ -42,6 +42,8 @@ class Router
      */
     public static function dispatch ($url) {
 
+        $url = self::removeQueryString($url); // Удаление гет-параметров из адресной строки
+
         if (self::matchRoute($url)) { // Если маршрут найден с помощью метода matchRoute
 
             // Формируем пространство имен контроллера
@@ -158,6 +160,29 @@ class Router
     protected static function lowerCamelCase ($str) {
 
         return lcfirst(self::upperCamelCase($str));
+
+    }
+
+    /*
+     * Функция удаления гет-параметров из адресной строки
+     */
+    protected static function removeQueryString ($url) {
+
+        if ($url) {
+
+            $params = explode('&', $url, 2);
+
+            if (false === strpos($params[0], '=')) {
+
+                return rtrim($params[0], '/');
+
+            } else {
+
+                return '';
+
+            }
+
+        }
 
     }
 

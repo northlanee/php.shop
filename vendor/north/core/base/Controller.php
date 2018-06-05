@@ -27,6 +27,9 @@ abstract class Controller
 
     }
 
+    /*
+     * Функция создания обьекта вида и отрисовки контента
+     */
     public function getView() {
 
         $viewObject = new View($this->route, $this->layout, $this->view, $this->meta);
@@ -34,20 +37,27 @@ abstract class Controller
 
     }
 
+    /*
+     * Функция передачи переменных из контроллера в вид
+     */
     public function set ($data) {
 
         $this->data = $data;
 
     }
 
-    // Функция, вызываемая в экшене для установки тайтла (метатеги устанавливаются из конфига)
+    /*
+     * Функция, вызываемая в экшене для установки тайтла (метатеги устанавливаются из конфига)
+     */
     public function setTitle ($title = '') {
 
         $this->meta['title'] = $title;
 
     }
 
-    // Функция, вызываемая в экшене для установки тайтла и метатегов
+    /*
+     * Функция, вызываемая в экшене для установки тайтла и метатегов
+     */
     public function setMeta ($title = '', $desc = '', $keywords = '') {
 
         $this->meta['title'] = $title;

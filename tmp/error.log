@@ -103,3 +103,33 @@
 [2018-06-05 10:56:06] Текст ошибки:
         (Class 'app\controllers\App' not found) | Файл: (D:\php\OSPanel\domains\shop.local\app\controllers\MainController.php) | Строка: (12)
 ===================
+[2018-06-05 23:35:02] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:35:46] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:35:54] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:36:08] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:46:35] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:46:38] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:46:59] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:48:04] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (82)
+===================
+[2018-06-05 23:48:31] Текст ошибки:
+        (Страница не найдена) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (84)
+===================
+[2018-06-05 23:48:55] Текст ошибки:
+        (Контроллер app\controllers\PageController не найден) | Файл: (D:\php\OSPanel\domains\shop.local\vendor\north\core\Router.php) | Строка: (77)
+===================
