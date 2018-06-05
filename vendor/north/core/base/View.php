@@ -48,12 +48,12 @@ class View
 
             $layoutFile = APP . "/views/layouts/{$this->layout}.php";
 
-            if (is_file($layoutFile)) {
-
-                require $layoutFile; // Подключаем шаблон
-
-            }
+            if (is_file($layoutFile)) require $layoutFile; // Подключаем шаблон
             else throw new \Exception("Не найден шаблон $layoutFile", 500);
+
+        } else {
+
+            echo $content;
 
         }
 
