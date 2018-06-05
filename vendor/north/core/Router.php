@@ -56,7 +56,7 @@ class Router
                 // Если метод найден в контроллере
                 if (method_exists($controllerObject, $action)) {
 
-                    // Вызываем нужный метод
+                    // Вызываем нужный метод и создаем обьект вида
                     $controllerObject->$action();
                     $controllerObject->getView();
 

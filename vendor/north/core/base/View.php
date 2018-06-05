@@ -26,31 +26,46 @@ class View
 
     }
 
+    /*
+     * Функция формирования вида запрашиваемой страницы
+     */
     public function render ($data) {
 
-        $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
+        if (is_array($data)) extract($data); // Распаковка массива переданных переменных
 
-        if (is_file($viewFile)) {
+        $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php"; // Путь к файлу вида
+
+        if (is_file($viewFile)) { // Если файл существует
 
             ob_start();
             require $viewFile;
-            $content = ob_get_clean();
+            $content = ob_get_clean(); // Заносим в переменную содержание вида
 
         }
-        else throw new \Exception("Не найден вид $viewFile", 500);
+        else throw new \Exception("Не найден вид $viewFile", 500); // Иначе выкидываем исключение
 
-        if (false !== $this->layout) {
+        if (false !== $this->layout) { // Если шаблон необходимо подключить
 
             $layoutFile = APP . "/views/layouts/{$this->layout}.php";
 
             if (is_file($layoutFile)) {
 
-                require $layoutFile;
+                require $layoutFile; // Подключаем шаблон
 
             }
             else throw new \Exception("Не найден шаблон $layoutFile", 500);
 
         }
+
+    }
+
+    // Функция для рендера тайтла и метатегов, получаемых по умолчанию или из контроллера
+    public function getMeta() {
+
+        $output = '<title>' . $this->meta['title'] . '</title>' . PHP_EOL;
+        $output .= '<meta name="description" content="' . $this->meta['desc'] . '">' . PHP_EOL;
+        $output .= '<meta name="keywords" content="' . $this->meta['keywords'] . '">' . PHP_EOL;
+        return $output;
 
     }
 

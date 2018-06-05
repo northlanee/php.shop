@@ -1,8 +1,8 @@
 <?php
 
-
 namespace north\base;
 
+use north\App;
 
 abstract class Controller
 {
@@ -21,6 +21,9 @@ abstract class Controller
         $this->controller = $route['controller'];
         $this->view = $route['action'];
         $this->prefix = $route['prefix'];
+        $this->meta['title'] = App::$app->getProperty('app_name');
+        $this->meta['desc'] = App::$app->getProperty('desc');
+        $this->meta['keywords'] = App::$app->getProperty('keywords');
 
     }
 
@@ -37,6 +40,14 @@ abstract class Controller
 
     }
 
+    // Функция, вызываемая в экшене для установки тайтла (метатеги устанавливаются из конфига)
+    public function setTitle ($title = '') {
+
+        $this->meta['title'] = $title;
+
+    }
+
+    // Функция, вызываемая в экшене для установки тайтла и метатегов
     public function setMeta ($title = '', $desc = '', $keywords = '') {
 
         $this->meta['title'] = $title;
