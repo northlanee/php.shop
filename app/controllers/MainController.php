@@ -8,8 +8,11 @@ class MainController extends AppController
 {
 
     public function indexAction() {
-        
-        $this->set(['name' => 'vasya', 'age' => 123]);
+
+        $posts = \R::findAll('test');
+
+        $this->set(compact('posts'));
+        $this->setTitle('Главная');
 
     }
 

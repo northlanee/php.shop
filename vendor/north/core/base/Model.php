@@ -2,6 +2,8 @@
 
 namespace north\base;
 
+use north\Db;
+
 abstract class Model
 {
 
@@ -11,7 +13,7 @@ abstract class Model
 
     public function __construct() {
 
-
+        Db::instance(); // Создание обьекта класса Db
 
     }
 

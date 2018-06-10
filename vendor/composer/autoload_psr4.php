@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'north\\' => array($vendorDir . '/north/core'),
     'app\\' => array($baseDir . '/app'),
+    'RedBeanPHP\\' => array($vendorDir . '/gabordemooij/redbean/RedBeanPHP'),
 );
