@@ -2,7 +2,7 @@
 
 define("DEBUG", 1);
 define("PATH", 'http://shop.local');
-define("LAYOUT", 'default');
+define("LAYOUT", 'shop');
 
 define("ROOT", dirname(__DIR__));
 define("WWW", ROOT . '/public');
